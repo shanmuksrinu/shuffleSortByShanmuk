@@ -51,13 +51,13 @@
         [array[i], array[j]] = [array[j], array[i]];
     }
     localStorage.setItem('updated', JSON.stringify(array));
-    $("#myDiv").load(location.href + " #myDiv");
+    $( "#myFrame" ).load( "#myFrame" );
 
       }
       onSort=()=>{
         console.log('data sorted');
         localStorage.setItem('updated',localStorage.getItem('dump'));
-        $('#myFrame').load('index.html');
+        $( "#myFrame" ).load( "#myFrame" );
       }
    </script>
    <body>
