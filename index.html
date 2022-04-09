@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@shanmuksrinu 
+shanmuksrinu
+/
+shuffleSortByShanmuk
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+shuffleSortByShanmuk/index.html
+@shanmuksrinu
+shanmuksrinu Update index.html
+Latest commit d4b6143 20 minutes ago
+ History
+ 1 contributor
+147 lines (144 sloc)  4.75 KB
+   
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -8,23 +37,6 @@
       <link rel="stylesheet" type="text/css" href="style.css" />
       <title>Shuffle and Sort</title>
    </head>
-   <body>
-      <div class="header">
-         <h1>Shuffle and Sort</h1>
-      </div>
-      </div>
-      <div class="container" id="myFrame">
-         <div class="actions">
-            <input type="button" class='button' Onclick=(onShuffle()) value="SHUFFLE">
-            <input type="button" class='button' Onclick=(onSort()) value="SORT">
-         </div>
-         <div class="board" id="'board">
-         </div>
-      </div>
-      <div class="footer">
-         Shuffle and Sort by Shanmuk
-      </div>
-   </body>
    <script>
       let dump = [{
               number: 1,
@@ -55,40 +67,9 @@
               color: '#2f454e'
           }];
         localStorage.setItem('dump', JSON.stringify(dump));
-        renderHtml=()=>{
-            var retrievedObject = JSON.parse(localStorage.getItem('dump'));
-                var updatedObject = JSON.parse(localStorage.getItem('updated'))||[];
-                var cardArray=[];
-                if(updatedObject.length>0){
-                    cardArray=[...updatedObject]
-                }else{
-                    cardArray=[...retrievedObject]
-                }
-                var string='';
-                cardArray.forEach(eachCard=>{
-                   if(window.matchMedia("(max-width: 600px)").matches){
-                       string+= `<div class="card">
-                   <div class="one" style="background-color:${eachCard.color}"> </div>
-               <div class="number" style="background-color:none">
-               ${eachCard.number}
-               </div>
-               </div>`
-                   }else{
-                       string+= `<div class="card">
-                   <div class="one" style="background-color:${eachCard.color}"> </div>
-               <div class="number" style="background-color:${eachCard.color};" >
-               ${eachCard.number}
-               </div>
-               </div>`
-                   }
-                  
-               })
-               document.getElementById("board").innerHTML =string;
-           
-        }
       window.onload = (event) => {
       console.log('page is fully loaded');
-      renderHtml();
+
       };
       onShuffle=()=>{
       console.log('data shuffled');
@@ -96,16 +77,60 @@
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
-      }
-      localStorage.setItem('updated', JSON.stringify(array));
-      renderHtml();
-      
+    }
+    localStorage.setItem('updated', JSON.stringify(array));
+    $("#myDiv").load(location.href + " #myDiv");
+
       }
       onSort=()=>{
         console.log('data sorted');
         localStorage.setItem('updated',localStorage.getItem('dump'));
-        renderHtml();
+        $('#myFrame').load('index.html');
       }
-      
    </script>
+   <body>
+      <div class="header">
+         <h1>Shuffle and Sort</h1>
+      </div>
+      </div>
+      <div class="container" id="myFrame">
+         <div class="actions">
+            <input type="button" class='button' Onclick=(onShuffle()) value="SHUFFLE">
+            <input type="button" class='button' Onclick=(onSort()) value="SORT">
+         </div>
+         <div class="board">
+            <script>
+                var retrievedObject = JSON.parse(localStorage.getItem('dump'));
+                var updatedObject = JSON.parse(localStorage.getItem('updated'))||[];
+                var cardArray=[];
+                if(updatedObject.length>0){
+                    cardArray=[...updatedObject]
+                }else{
+                    cardArray=[...retrievedObject]
+                }
+                cardArray.forEach(eachCard=>{
+                   if(window.matchMedia("(max-width: 600px)").matches){
+                       document.write( `<div class="card">
+                   <div class="one" style="background-color:${eachCard.color}"> </div>
+               <div class="number" style="background-color:none">
+               ${eachCard.number}
+               </div>
+               </div>`)
+                   }else{
+                       document.write( `<div class="card">
+                   <div class="one" style="background-color:${eachCard.color}"> </div>
+               <div class="number" style="background-color:${eachCard.color};" >
+               ${eachCard.number}
+               </div>
+               </div>`)
+                   }
+                  
+               })
+            </script>
+         </div>
+      </div>
+      <div class="footer">
+         Shuffle and Sort by Shanmuk
+      </div>
+   </body>
 </html>
