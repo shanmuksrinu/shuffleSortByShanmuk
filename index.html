@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <title>Shuffle and Sort</title>
+</head>
+<script>
+    
+    let dump = [{
+            number: 1,
+            color: '#6f98a8'
+        }, {
+            number: 2,
+            color: '#72c3dc'
+        }, {
+            number: 3,
+            color: '#2f454e'
+        }, {
+            number: 4,
+            color: '#72c3dc'
+        }, {
+            number: 5,
+            color: '#2f454e'
+        }, {
+            number: 6,
+            color: '#bfbfbf'
+        }, {
+            number: 7,
+            color: '#bfbfbf'
+        }, {
+            number: 8,
+            color: '#6f98a8'
+        }, {
+            number: 9,
+            color: '#2f454e'
+        }];
+   window.onload = (event) => {
+  console.log('page is fully loaded');
+};
+onShuffle=()=>{
+    console.log('data shuffled');
+}
+    </script>
+<body>
+  <div class="header">
+    <h1>Shuffle and Sort</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="actions">
+        <input type="button" class='button' Onclick=(onShuffle()) value="SHUFFLE">
+        <input type="button" class='button' value="SORT">
+    </div>
+    <div class="board">
+        <script>
+            dump.forEach(eachCard=>{
+               document.write( `<div class="card">
+                <div class="one" style="background-color:${eachCard.color}"> </div>
+        <div class="number" style="${window.matchMedia("(max-width: 600px)").matches?('background-color':'none'):('background-color':eachCard.color)}; '@media(max-width:600px)'{background-color:none};">
+            ${eachCard.number}
+            </div>
+        </div>`)
+            })
+            </script>
+        
+        <!-- <div class="card"><div class="one"></div>
+        <div class="number">
+            2
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            3
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            4
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            5
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            6
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            7
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            8
+            </div>
+        </div>
+        <div class="card"><div class="one"></div>
+        <div class="number">
+            9
+            </div>
+        </div> -->
+    </div>
+  </div>
+
+  <div class="footer">
+      Shuffle and Sort by Shanmuk
+
+      </div>
+</body>
+
+</html>
